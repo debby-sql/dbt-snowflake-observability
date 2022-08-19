@@ -3,6 +3,26 @@ debby:
   target: dev
   outputs:
     dev:
+      type: snowflake
+      user: "{{ env_var('SNOWSQL_USER', 'dbt') }}"
+      password: "{{ env_var('SNOWSQL_PWD') }}"
+      account: "{{ env_var('SNOWSQL_ACCOUNT') }}"
+      database: "{{ env_var('SNOWSQL_DATABASE', 'dbt') }}"
+      schema: "{{ env_var('SNOWSQL_SCHEMA', 'dev') }}"
+      warehouse: "{{ env_var('SNOWSQL_WAREHOUSE', 'dbt') }}"
+      role: "{{ env_var('SNOWSQL_ROLE', 'transformer') }}"
+
+    prod:
+      type: snowflake
+      user: "{{ env_var('SNOWSQL_USER') }}"
+      password: "{{ env_var('SNOWSQL_PWD') }}"
+      account: "{{ env_var('SNOWSQL_ACCOUNT') }}"
+      database: "{{ env_var('SNOWSQL_DATABASE') }}"
+      schema: "{{ env_var('SNOWSQL_SCHEMA', 'prod') }}"
+      warehouse: "{{ env_var('SNOWSQL_WAREHOUSE', 'dbt') }}"
+      role: "{{ env_var('SNOWSQL_ROLE', 'transformer_prod') }}"
+
+    ci:
       type: sqlite
 
       # sqlite locks the whole db on writes so anything > 1 won't help

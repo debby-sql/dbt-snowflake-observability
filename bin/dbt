@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -f .env ]
+then
+  export $(cat .env | xargs)
+fi
+
 export DBT_PROFILES_DIR=$PWD
 export DBT_PROJECT_DIR=$PWD
 

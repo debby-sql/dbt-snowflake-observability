@@ -5,7 +5,10 @@
 name: 'debby'
 version: '1.0.0'
 config-version: 2
-query-comment: "{{ query_comment(node) }}"
+
+query-comment: 
+  comment: "{{ query_comment(node) }}"
+  append: true
 
 # This setting configures which "profile" dbt uses for this project.
 profile: 'debby'
