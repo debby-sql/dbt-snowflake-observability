@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export DBT_PROFILES_DIR=$PWD
+export DBT_PROJECT_DIR=$PWD
+
+venv/bin/dbt \
+    --profiles-dir $DBT_PROFILES_DIR \
+    $@
