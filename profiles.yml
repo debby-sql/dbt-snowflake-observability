@@ -23,7 +23,7 @@ debby:
       # directory where all *.db files are attached as schema, using base filename
       # as schema name, and where new schema are created. this can overlap with the dirs of
       # files in schemas_and_paths as long as there's no conflicts.
-      schema_directory: '/my_project/data'
+      schema_directory: "{{ env_var('PWD') }}"
 
       # optional: list of file paths of SQLite extensions to load. see README for more details.
       # extensions:
