@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  pytest:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -21,6 +21,6 @@ jobs:
     
     - name: Set up
       run: bin/setup
-    
-    - name: Test
-      run: bin/test
+  
+    - name: Deploy
+      run: bin/dbt build --target prod
