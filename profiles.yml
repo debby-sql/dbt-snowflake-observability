@@ -4,6 +4,7 @@ debby:
   outputs:
     dev:
       type: snowflake
+      threads: 8
       user: "{{ env_var('SNOWSQL_USER', 'dbt') }}"
       password: "{{ env_var('SNOWSQL_PWD') }}"
       account: "{{ env_var('SNOWSQL_ACCOUNT') }}"
@@ -14,6 +15,7 @@ debby:
 
     prod:
       type: snowflake
+      threads: 8
       user: "{{ env_var('SNOWSQL_USER') }}"
       password: "{{ env_var('SNOWSQL_PWD') }}"
       account: "{{ env_var('SNOWSQL_ACCOUNT') }}"
