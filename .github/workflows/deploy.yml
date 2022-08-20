@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  DEBBY_ENV: "1"
+
 permissions:
   contents: read
 

@@ -3,6 +3,9 @@ name: CI
 on:
   push:
 
+env:
+  DEBBY_ENV: "1"
+
 permissions:
   contents: read
 
