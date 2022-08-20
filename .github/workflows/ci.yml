@@ -5,6 +5,7 @@ on:
 
 env:
   DEBBY_DEV: "1"
+  DEBBY_CI: "1"
 
 permissions:
   contents: read
