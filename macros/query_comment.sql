@@ -22,15 +22,19 @@
             "database": node.database,
             "schema": node.schema,
             "identifier": node.identifier,
-            "materialized": node.config.get('materialized')
+            "name": node.name
         },
-        meta=node.config.meta,
-        tags=node.tags
+        materialized=node.config.get('materialized'),
+        meta=node.config.get('meta'),
+        tags=node.tags,
+        depends_on_nodes=node.depends_on['nodes'],
+        sources=node.sources,
+        description=node.description
+
       ) -%}
     {% else %}
       {%- do comment_dict['node'].update(node_id=none) -%}
     {%- endif -%}
-    
-    {# Note we add markers to the comment to help the regex extract the JSON #}
+
     {% do return('&&DEBBY_COMMENT_START ' + tojson(comment_dict) + ' &&DEBBY_COMMENT_END') %}
 {% endmacro %}
