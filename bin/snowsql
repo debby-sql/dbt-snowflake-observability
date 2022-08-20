@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -f .env ]
+then
+  export $(cat .env | xargs)
+fi
+
+export SNOWSQL_WAREHOUSE=dbt
+export SNOWSQL_ROLE=transformer
+export SNOWSQL_DATABASE=dbt
+export SNOWSQL_SCHEMA=dev
+
+echo "Using snowsql $(which snowsql)"
+snowsql $@
