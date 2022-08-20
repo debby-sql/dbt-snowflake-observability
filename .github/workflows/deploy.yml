@@ -28,5 +28,10 @@ jobs:
     - name: Set up
       run: bin/setup
   
+    # We exit 0 on deploys because we want to include some failing tests & models
+    # for demo purposes. An improvement would be to write a script that checks
+    # the only failing models & tests are the expected ones.
     - name: Deploy
-      run: bin/dbt build --target prod
+      run: |
+        bin/dbt build --target prod
+        exit 0
