@@ -10,6 +10,12 @@ permissions:
 
 jobs:
   deploy:
+    environment: prod
+    env:
+      SNOWSQL_USER: "${{ secrets.SNOWSQL_USER }}"
+      SNOWSQL_PWD: "${{ secrets.SNOWSQL_PWD }}"
+      SNOWSQL_DATABASE: "${{ secrets.SNOWSQL_DATABASE }}"
+      SNOWSQL_ACCOUNT: "${{ secrets.SNOWSQL_ACCOUNT }}"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
