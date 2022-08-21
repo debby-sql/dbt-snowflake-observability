@@ -9,7 +9,7 @@ Add this package to your `packages.yml` file.
 ```yml
 packages:
   - git: "https://github.com/debby-sql/debby.git"
-    revision: 1.0
+    revision: 1.0.0
 ```
 
 Add the following configuration to your `dbt_project.yml` file.
