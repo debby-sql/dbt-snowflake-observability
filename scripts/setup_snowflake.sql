@@ -9,12 +9,10 @@ grant role transformer_prod to user dbt;
 use role sysadmin;
 
 create database dbt;
-create schema dbt.prod;
-create schema dbt.dev;
 grant usage on database dbt to role transformer;
 grant usage on database dbt to role transformer_prod;
-grant ownership on schema dbt.prod to role transformer_prod;
-grant ownership on schema dbt.dev to role transformer;
+grant create schema on database dbt to role transformer;
+grant create schema on database dbt to role transformer_prod;
 
 create or replace warehouse dbt with 
     AUTO_SUSPEND=60
