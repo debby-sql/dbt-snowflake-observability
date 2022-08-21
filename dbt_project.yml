@@ -10,6 +10,10 @@ query-comment:
   comment: "{{ query_comment(node) }}"
   append: true
 
+tests:
+  store_failures: true
+  limit: 10
+
 # This setting configures which "profile" dbt uses for this project.
 profile: 'debby'
 

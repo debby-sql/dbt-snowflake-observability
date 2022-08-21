@@ -14,7 +14,8 @@ less than the specified threshold.
 select
     query_id,
     node:node_name::varchar as name,
-    error_code is null and rows_produced = 0 as is_success,
+    {# This logic requires that the dbt project stores failures #}
+    error_code is null and rows_produced is null as is_success,
     node:node_id::varchar as unique_id,
     start_time,
     end_time,
