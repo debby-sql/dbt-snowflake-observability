@@ -2,5 +2,5 @@
 
 venv/bin/dbt clean
 rm -rf logs/
-bin/dbt build --target ci
+bin/dbt build --target ci --select models/example
 venv/bin/pytest pytests

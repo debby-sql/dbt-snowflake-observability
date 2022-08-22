@@ -41,11 +41,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   debby:
-    # Disabled unless running within a debby dev environment
+    # Disabled unless running within debby ci environment
     example:
       +materialized: view
-      enabled: "{{ env_var('DEBBY_DEV', '0') == '1' | as_bool }}"
-    
-    # Disabled unless running in CI
-    debby:
-      enabled: "{{ env_var('DEBBY_CI', '1') == '0' | as_bool }}"
+      enabled: "{{ env_var('DEBBY_CI', '0') == '1' | as_bool }}"
