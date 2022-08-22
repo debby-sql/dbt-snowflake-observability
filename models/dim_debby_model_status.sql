@@ -30,4 +30,5 @@ select
     rows_deleted,
     rows_updated
 from {{ ref('fct_debby_model_runs') }}
+where unique_id in (select unique_id from {{ ref('dim_debby_active_models') }})
 qualify row_number() over (partition by name order by start_time desc) = 1

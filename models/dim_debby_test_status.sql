@@ -17,4 +17,5 @@ select
     error_code,
     query_id
 from {{ ref('fct_debby_test_runs') }}
+where unique_id in (select unique_id from {{ ref('dim_debby_active_tests') }})
 qualify row_number() over (partition by name order by start_time desc) = 1
