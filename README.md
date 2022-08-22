@@ -1,6 +1,8 @@
 # debby
 
-_Observability for dbt projects built on Snowflake_
+_Better observability for dbt projects built on Snowflake_
+
+Debby provides near real-time views into your dbt project's health. By enriching your query logs with detailed information about which model or test was running, it's able to extract that metadata into a single table with a rich summary of your whole project.
 
 ## Install
 
@@ -9,7 +11,7 @@ Add this package to your `packages.yml` file.
 ```yml
 packages:
   - git: "https://github.com/debby-sql/debby.git"
-    revision: 1.0.0
+    revision: 1.1.0
 ```
 
 Add the following configuration to your `dbt_project.yml` file.
@@ -23,3 +25,18 @@ tests:
   store_failures: true
   limit: 10  
 ```
+
+Build your dbt models however you normally would. You can use `run` and then `test` or you can use the single `build` command.
+
+```sh
+dbt run ...
+dbt test ...
+```
+
+Finally, build the `debby` models.
+
+```
+dbt build -s package:debby
+```
+
+Your model status will typically take about 10 minutes to appear in the views created by `debby`.
