@@ -4,7 +4,7 @@
     config(
       target_schema=target.schema,
       strategy='timestamp',
-      updated_at='current_timestamp()',
+      updated_at='snapshotted_at',
       unique_key='invocation_id'
     )
 }}
