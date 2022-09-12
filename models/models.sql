@@ -4,8 +4,9 @@
     )
 }}
 
-select 
-    f.value:unique_id::varchar as unique_id,
-    f.value:name::varchar as name
-from {{ ref('active_nodes') }} nodes,
-lateral flatten(input => nodes.models) f
+select *
+from {{ ref('__active_models__') }} model
+join {{ ref('__active_model_latest_query_summary__') }} summary
+on (
+    model.unique_id = summary.node_id
+)
