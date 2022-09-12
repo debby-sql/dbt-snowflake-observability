@@ -11,7 +11,7 @@
 
 select
     current_timestamp() as snapshotted_at,
-    {{ target.name }} as target,
-    {{ invocation_id }} as invocation_id
+    '{{ target.name }}' as target,
+    '{{ invocation_id }}' as invocation_id
 
 {% endsnapshot %}
