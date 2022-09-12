@@ -29,7 +29,41 @@ tests:
 Build your dbt models.
 
 ```sh
-dbt build
+dbt build ...
 ```
 
-Your model status will typically take about 10 minutes to appear in the views created by `debby`.
+## Development
+
+Clone this repo.
+
+```
+git clone git@github.com:debby-sql/dbt-snowflake-observability.git
+```
+
+Create a .env file containing your Snowflake credentials. Note that your credentials need access to the `snowflake` database share in your snowflake account.
+
+```
+# .env
+SNOWSQL_ACCOUNT=...
+SNOWSQL_USER=...
+SNOWSQL_PWD=...
+SNOWSQL_DATABASE=...
+```
+
+Run the setup script.
+
+```
+bin/setup
+```
+
+You should now be able to confirm your connection is working and build the models.
+
+```
+bin/dbt debug
+```
+
+The local python tests can be ran with the helper script.
+
+```
+bin/test
+```
