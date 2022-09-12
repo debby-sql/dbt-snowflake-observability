@@ -40,3 +40,39 @@ dbt build -s package:debby
 ```
 
 Your model status will typically take about 10 minutes to appear in the views created by `debby`.
+
+## Development
+
+Clone this repo.
+
+```
+git clone git@github.com:debby-sql/dbt-snowflake-observability.git
+```
+
+Install a python virtual environment.
+
+```
+python3 -m virtualenv venv
+```
+
+Install the python dependencies.
+
+```
+venv/bin/pip install -r requirements.txt
+```
+
+Create a .env file containing your Snowflake credentials. Note that your credentials need access to the `snowflake` database share in your snowflake account.
+
+```
+# .env
+SNOWSQL_ACCOUNT=...
+SNOWSQL_USER=...
+SNOWSQL_PWD=...
+SNOWSQL_DATABASE=...
+```
+
+You should now be able to confirm your connection is working.
+
+```
+bin/dbt debug
+```
