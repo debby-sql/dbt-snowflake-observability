@@ -5,6 +5,7 @@
 }}
 
 select
+    target_name,
     node_id,
     count(1) as statements,
     min(start_time) as start_time,
@@ -15,8 +16,8 @@ select
     sum(bytes_written) as bytes_written,
     sum(bytes_scanned) as bytes_scanned,
     sum(partitions_scanned) as partitions_scanned,
-    sum(compilation_time) as compilation_time,
+    sum(compilation_time) as compilation_time_ms,
     sum(bytes_spilled_to_local_storage) as bytes_spilled_to_local_storage,
     sum(bytes_spilled_to_remote_storage) as bytes_spilled_to_remote_storage
 from {{ ref('__active_model_latest_query_history__') }} history
-group by node_id
+group by target_name, node_id
