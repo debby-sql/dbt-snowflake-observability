@@ -12,6 +12,7 @@ select
     model.schema,
     model.materialization,
     summary.end_time as last_built_at,
+    summary.full_refresh,
     summary.statements as statements,
     timediff('milliseconds', summary.start_time, summary.end_time) as build_time_ms,
     summary.execution_time_ms as compute_time_ms,
