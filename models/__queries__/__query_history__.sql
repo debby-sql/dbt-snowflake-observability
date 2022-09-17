@@ -16,6 +16,7 @@ select
     parsed_query_comment:dbt:target_name::varchar as target_name,
     parsed_query_comment:dbt:version::varchar as dbt_version,
     parsed_query_comment:dbt:full_refresh::boolean as full_refresh,
+    parsed_query_comment:node:depends_on_nodes as depends_on_nodes,
     *
 from {{ source('snowflake', 'query_history') }}
 where has_valid_comment

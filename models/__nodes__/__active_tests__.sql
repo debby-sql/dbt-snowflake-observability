@@ -6,7 +6,7 @@
 
 with test_ids as (
     select 
-        f.value:unique_id::varchar as unique_id,
+        f.value:unique_id::varchar as test_id,
         f.value:name::varchar as name,
         f.value:depends_on:nodes as nodes
     from {{ ref('__active_nodes__') }} nodes,
@@ -14,7 +14,7 @@ with test_ids as (
 )
 
 select
-    test_ids.unique_id,
+    test_ids.test_id,
     test_ids.name,
     f.value::varchar as node_id
 from test_ids,
