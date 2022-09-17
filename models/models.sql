@@ -16,13 +16,16 @@ select
     summary.statements as statements,
     timediff('milliseconds', summary.start_time, summary.end_time) as build_time_ms,
     summary.execution_time_ms as compute_time_ms,
-    summary.queued_time_ms as queued_time,
+    summary.queued_time_ms as queued_time_ms,
     summary.compilation_time_ms as compilation_time_ms,
     summary.bytes_written,
     summary.bytes_scanned,
     summary.partitions_scanned,
     summary.bytes_spilled_to_local_storage,
-    summary.bytes_spilled_to_remote_storage
+    summary.bytes_spilled_to_remote_storage,
+    summary.has_build_error,
+    summary.build_error_code,
+    summary.build_error_message
 from {{ ref('__active_models__') }} model
 join {{ ref('__active_model_latest_query_summary__') }} summary
 on (

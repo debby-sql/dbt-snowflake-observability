@@ -20,6 +20,9 @@ select
     sum(compilation_time) as compilation_time_ms,
     sum(bytes_spilled_to_local_storage) as bytes_spilled_to_local_storage,
     sum(bytes_spilled_to_remote_storage) as bytes_spilled_to_remote_storage,
-    max(full_refresh) as full_refresh
+    max(full_refresh) as full_refresh,
+    max(has_build_error) as has_build_error,
+    max(build_error_code) as build_error_code,
+    max(build_error_message) as build_error_message
 from {{ ref('__active_model_query_history__') }} history
 group by target_name, node_id, invocation_id
